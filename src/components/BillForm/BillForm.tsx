@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useFormik } from "formik";
 
 import {
@@ -43,7 +41,7 @@ const BillForm = (props: BillFormProps) => {
     },
   });
 
-  const handleBlurEvent = async (e) => {
+  const handleBlurEvent = async (e: React.FocusEvent) => {
     formik.handleBlur(e);
 
     await trySaveBill();
@@ -61,8 +59,14 @@ const BillForm = (props: BillFormProps) => {
       <Grid container spacing={3}>
         <Grid item xs={12} md={12} sx={{ mb: "2rem" }}>
           <FormControl
-            fullWidth
             error={formik.touched.amount && formik.errors.amount ? true : false}
+            sx={{
+              "& .MuiInput-underline:before": { borderBottom: "none" },
+              "& .MuiInputBase-input": {
+                color: "#0f68f7",
+                fontWeight: 700,
+              },
+            }}
           >
             <InputLabel htmlFor="amount">Amount</InputLabel>
             <Input
@@ -72,7 +76,11 @@ const BillForm = (props: BillFormProps) => {
               value={formik.values.amount}
               onChange={formik.handleChange}
               onBlur={handleBlurEvent}
-              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+              startAdornment={
+                <InputAdornment position="start">
+                  <span className={styles.inputAdornment}>$</span>
+                </InputAdornment>
+              }
             />
             <FormHelperText>
               {formik.touched.amount && Boolean(formik.errors.amount) ? formik.errors.amount : ""}
@@ -94,8 +102,11 @@ const BillForm = (props: BillFormProps) => {
           >
             {accounts.map((option) => (
               <MenuItem className={styles.accountsInfo} key={option.id} value={option.name}>
-                <ListItemText primary={option.name} />
-                <ListItemText primary={option.sum} />
+                <ListItemText
+                  primary={option.name}
+                  sx={{ display: "inline-block", paddingRight: "50px" }}
+                />
+                <ListItemText primary={option.sum} sx={{ display: "inline-block" }} />
               </MenuItem>
             ))}
           </TextField>
