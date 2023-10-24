@@ -16,7 +16,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 import { Account } from "../../types/Account";
-import { Bill } from "../../types/bill";
+import { Bill } from "../../types/Bill";
 import { Payee } from "../../types/Payee";
 
 import validationSchema from "./validation/billValidation";

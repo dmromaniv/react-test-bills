@@ -7,7 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useBillList, useAccount, usePayee } from "../../hooks/customHooks";
 
 import BillForm from "../BillForm/BillForm";
-import { Bill } from "../../types/bill";
+import { Bill } from "../../types/Bill";
 
 import styles from "./BillFormList.module.css";
 

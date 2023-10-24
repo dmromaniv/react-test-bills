@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import getAvailableAccounts from "../services/account.service";
 
-import { Bill } from "../types/bill";
+import { Bill } from "../types/Bill";
 import { Account } from "../types/Account";
 import { Payee } from "../types/Payee";
 import getAvailablePayee from "../services/payee.service";
